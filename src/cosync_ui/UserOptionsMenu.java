@@ -48,6 +48,9 @@ public class UserOptionsMenu {
 		this.modelDisplayView = modelDisplayView;
 	}
 
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public void build(Shell parentShell) {
 		menuShell = new Shell(parentShell, SWT.DIALOG_TRIM | SWT.ON_TOP);
 		menuShell.setText("User Options");
@@ -82,31 +85,31 @@ public class UserOptionsMenu {
 		});
 
 		displaySrcButton = new Button(graphElementsGroup, SWT.CHECK);
-		displaySrcButton.setText("SRC Elements");
+		displaySrcButton.setText("Source Elements");
 		displaySrcButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		displaySrcButton.setSelection(userOptionsManager.displaySrcContextForMatches());
 		displaySrcButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent pSelectionEvent) {
 				userOptionsManager.setDisplaySrcContextForMatches(displaySrcButton.getSelection());
-				//modelDisplayView.refresh();
+				modelDisplayView.refreshSRCCheckSelection(displaySrcButton.getSelection());
 			}
 		});
 
 		displayTrgButton = new Button(graphElementsGroup, SWT.CHECK);
-		displayTrgButton.setText("TRG Elements");
+		displayTrgButton.setText("Target Elements");
 		displayTrgButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		displayTrgButton.setSelection(userOptionsManager.displayTrgContextForMatches());
 		displayTrgButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent pSelectionEvent) {
 				userOptionsManager.setDisplayTrgContextForMatches(displayTrgButton.getSelection());
-				//modelDisplayView.refresh();
+				modelDisplayView.refreshTRGCheckSelection(displayTrgButton.getSelection());
 			}
 		});
 
 		displayCorrButton = new Button(graphElementsGroup, SWT.CHECK);
-		displayCorrButton.setText("CORR Elements");
+		displayCorrButton.setText("Correspondence Elements");
 		displayCorrButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		displayCorrButton.setSelection(userOptionsManager.displayCorrContextForMatches());
 		displayCorrButton.addSelectionListener(new SelectionAdapter() {
@@ -129,6 +132,7 @@ public class UserOptionsMenu {
 		edgeLabelCeckBox.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent pSelectionEvent) {
+				modelDisplayView.refreshEdgeLabelSelection(edgeLabelCeckBox.getSelection());
 				if (!edgeLabelCeckBox.getSelection()) {
 					userOptionsManager.setEdgeLabelVisualization(VisualizationLabelOptions.NONE);
 					// disable radio buttons
@@ -329,11 +333,11 @@ public class UserOptionsMenu {
 		neighborhoodScale.setMinimum(0);
 		neighborhoodScale.setPageIncrement(1);
 		neighborhoodScale.setMaximum(3);
+		neighborhoodScale.setSelection(3);
 		neighborhoodScale.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent pSelectionEvent) {
 				userOptionsManager.setNeighborhoodSize(neighborhoodScale.getSelection());
-				//modelDisplayView.refresh();
 			}
 		});
 

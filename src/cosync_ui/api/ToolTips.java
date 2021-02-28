@@ -31,12 +31,19 @@ public enum ToolTips {
 	MODEL_UCEDITRESOLVE_BUTTON("Click to resolve uncontroversial edits in the models.",
 			"Click to resolve the uncontroversial edits in the models."),
 	
-	CONFLICTSLIST_TREE("This panel lists all conflicts in the models.",
-			"This panel lists all conflicts in the interrelated models."),
+	CONFLICTSLIST_TREE("This panel lists all conflicts in the models.", "This panel lists all conflicts in the interrelated models."),
 	CONFLICTSLIST_AUTOMATESOL_MENUTITEM("Select to resolve conflict automatically."),
 	CONFLICTSLIST_MANUALSOL_MENUTITEM("Select to resolve conflict manually."),
 	CONFLICTSLIST_COLLAPSE_MENUTITEM("Collapses all tree elements."), 
-	CONFLICTSLIST_EXPAND_MENUITEM("Expands all tree elements.");
+	CONFLICTSLIST_EXPAND_MENUITEM("Expands all tree elements."),
+	CONFLICTSLIST_HIGHLIGHT_MENUITEM("Highlight this conflict in the graph."),
+	
+	SAVE_CURRENT_MENU("Save the current state of the models",
+			"Save the current state of the model. The saved models are added as (Source, Target and Correspondence) xmi files to the \"Instances\" folder"),
+	PREVIOUS_STATE_MENU("Go back to previous state of the models"),
+	PREFERENCES_MENU("Set user preferences for graph visualization", "Opens a menu in which you can change the graph visualization."),
+	COMPARE_VIEW_MENU("Select to compare with previous state in compare view. Click again to switch back to main view.", "Switch to compare view of models in current state and previous state"),
+	;
 
 	private String shortDescription;
 	private String longDescription;
