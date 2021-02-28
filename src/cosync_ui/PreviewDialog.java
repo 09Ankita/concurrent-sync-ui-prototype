@@ -213,6 +213,10 @@ public class PreviewDialog {
 			@Override
 			public void widgetSelected(SelectionEvent pSelectionEvent) {
 				menuShell.setVisible(false);
+				compareView.dispose();
+				CoSync_UI.hideMainView();
+				ConflictsListView.enableTreeView();
+				parentShell.layout(true, true);
 			}
 		});
 
