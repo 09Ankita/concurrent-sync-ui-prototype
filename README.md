@@ -9,5 +9,5 @@
 
 
 ###### Steps required to run the Prototype:
-1. *CoSync_UI* contains the main() method.
+1. *src/cosync_ui/CoSync_UI.java* contains the main() method.
 2. Select **CoSync_UI.java**, right-click and select Run As -> Java Application
